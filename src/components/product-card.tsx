@@ -1,26 +1,26 @@
+import type { ReactNode } from 'react';
 import {
   AspectRatio,
   Box,
   type BoxProps,
   Button,
-  type ButtonProps,
   LinkBox,
   LinkOverlay,
 } from '@chakra-ui/react';
 
 export interface ProductCardProps {
   root?: Omit<BoxProps, 'children'>;
-  topLeft?: BoxProps;
+  topLeft?: ReactNode;
   image?: {
     src?: string;
     alt?: string;
     ratio?: number;
   };
-  brand?: BoxProps;
-  name?: BoxProps;
+  brand?: ReactNode;
+  name?: ReactNode;
   href?: string;
-  price?: BoxProps;
-  button?: ButtonProps;
+  price?: ReactNode;
+  button?: ReactNode;
 }
 
 export const ProductCard = ({
@@ -59,44 +59,48 @@ export const ProductCard = ({
           />
         </AspectRatio>
       )}
-      {topLeft?.children && (
+      {topLeft && (
         <Box
           position="absolute"
           top="0"
           left="0"
-          {...topLeft}
-        />
+        >
+          {topLeft}
+        </Box>
       )}
-      {brand?.children && (
+      {brand && (
         <Box
           textStyle={['Mobile/Body-XS', null, 'Desktop/Body-XS']}
           textColor="text-muted"
-          {...brand}
-        />
+        >
+          {brand}
+        </Box>
       )}
-      {name?.children && (
+      {name && (
         <Box
           textStyle={['Mobile/Body-Default', null, 'Desktop/Body-Default']}
           textColor="text"
           my={1}
         >
-          <LinkOverlay href={href ?? ''}>{name.children}</LinkOverlay>
+          <LinkOverlay href={href ?? ''}>{name}</LinkOverlay>
         </Box>
       )}
-      {price?.children && (
+      {price && (
         <Box
           textStyle={['Mobile/Body-S', null, 'Desktop/Body-S']}
           textColor="text"
-          {...price}
-        />
+        >
+          {price}
+        </Box>
       )}
-      {button?.children && (
+      {button && (
         <Button
           mt={3}
           size="md"
           width="full"
-          {...button}
-        />
+        >
+          {button}
+        </Button>
       )}
     </LinkBox>
   );

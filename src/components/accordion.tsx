@@ -1,14 +1,14 @@
 import { type ReactNode } from 'react';
 import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 import {
-  Accordion as ChackraAccordion,
-  type AccordionProps as ChackraAccordionProps,
+  Accordion as ChakraAccordion,
+  type AccordionProps as ChakraAccordionProps,
   AccordionButton,
-  type AccordionButtonProps as ChackraAccordionButtonProps,
+  type AccordionButtonProps as ChakraAccordionButtonProps,
   AccordionItem,
-  type AccordionItemProps as ChackraAccordionItemProps,
+  type AccordionItemProps as ChakraAccordionItemProps,
   AccordionPanel,
-  type AccordionPanelProps as ChackraAccordionPanelProps,
+  type AccordionPanelProps as ChakraAccordionPanelProps,
   Box,
 } from '@chakra-ui/react';
 
@@ -47,10 +47,10 @@ interface ItemProps extends AccordionItemProps {
 }
 
 export interface AccordionProps {
-  accordionButtonProps?: ChackraAccordionButtonProps;
-  accordionItemProps?: ChackraAccordionItemProps;
-  accordionPanelProps?: ChackraAccordionPanelProps;
-  accordionProps?: ChackraAccordionProps;
+  accordionButtonProps?: ChakraAccordionButtonProps;
+  accordionItemProps?: ChakraAccordionItemProps;
+  accordionPanelProps?: ChakraAccordionPanelProps;
+  accordionProps?: ChakraAccordionProps;
   items: ItemProps[];
   showLeftIcon?: boolean;
   showRightIcon?: boolean;
@@ -85,19 +85,19 @@ export const Accordion = ({
     []
   );
 
-  const renderLeftIcon = (fontSize: string) => (
-    <AddIcon
-      fontSize={fontSize}
-      mr={4}
-    />
-  );
+  const renderLeftIcon = (isExpanded: boolean, fontSize: string) => {
+    const IconToRender = isExpanded ? CloseIcon : AddIcon;
+    return (
+      <IconToRender
+        fontSize={fontSize}
+        mr={4}
+      />
+    );
+  };
 
   const renderRightIcon = (isExpanded: boolean, fontSize: string) => {
-    return isExpanded ? (
-      <CloseIcon fontSize={fontSize} />
-    ) : (
-      <AddIcon fontSize={fontSize} />
-    );
+    const IconToRender = isExpanded ? CloseIcon : AddIcon;
+    return <IconToRender fontSize={fontSize} />;
   };
 
   return (
@@ -106,7 +106,7 @@ export const Accordion = ({
       flexDirection="column"
       justifyContent="center"
     >
-      <ChackraAccordion
+      <ChakraAccordion
         allowToggle
         width="100%"
         marginTop={0}
@@ -128,7 +128,10 @@ export const Accordion = ({
                       {...accordionButtonProps}
                     >
                       {showLeftIcon &&
-                        renderLeftIcon(DefaultStyles[size].iconSize)}
+                        renderLeftIcon(
+                          isExpanded,
+                          DefaultStyles[size].iconSize
+                        )}
                       <Box
                         flex="1"
                         textAlign="left"
@@ -155,7 +158,7 @@ export const Accordion = ({
             </AccordionItem>
           );
         })}
-      </ChackraAccordion>
+      </ChakraAccordion>
     </Box>
   );
 };

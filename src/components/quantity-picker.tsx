@@ -29,11 +29,11 @@ export const QuantityPicker = (props: QuantityPickerProps) => {
   const {
     min = 0,
     max,
-    rootProps,
+    rootProps = {},
     isLoading,
     hideLabel,
     label = 'Quantity',
-    buttonProps,
+    buttonProps = {},
     controllableStateProps,
     size = 'lg',
   } = props;
