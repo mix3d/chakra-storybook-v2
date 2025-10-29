@@ -4,22 +4,21 @@ import {
   GridItem,
   Text,
   CloseButton,
-  Skeleton,
   AspectRatio,
-} from '@chakra-ui/react'
-import Image from 'next/image'
-import { HorizontalProductCardCommon, ProductCardLayout } from './types'
-import { QuantityPicker } from '../quantity-picker'
+} from '@chakra-ui/react';
+import type { HorizontalProductCardCommon, ProductCardLayout } from './types';
+import { QuantityPicker } from '../quantity-picker';
 
 export interface HorizontalProductCardEditableProps
   extends HorizontalProductCardCommon {
-  totalPrice?: string
-  onChangeQuantity?: (val: number) => any
+  totalPrice?: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  onChangeQuantity?: (val: number) => any;
 }
 
 const getGridConfig: (labels: {
-  quantityLabel: string
-  itemPriceLabel: string
+  quantityLabel: string;
+  itemPriceLabel: string;
 }) => ProductCardLayout = ({ quantityLabel, itemPriceLabel }) => ({
   2: null,
   3: {
@@ -173,7 +172,7 @@ const getGridConfig: (labels: {
       },
     },
   },
-})
+});
 
 export const HorizontalProductCardEditable = (
   props: HorizontalProductCardEditableProps
@@ -189,39 +188,39 @@ export const HorizontalProductCardEditable = (
     quantity,
     metaText,
     labels,
-  } = props
-  const { columns = 3, size = 'lg' } = props
-  const { onRemove, onAddToWishlist, onChangeQuantity, isLoading } = props
+  } = props;
+  const { columns = 3, size = 'lg' } = props;
+  const { onRemove, onAddToWishlist, onChangeQuantity, isLoading } = props;
 
-  const quantityLabel = labels.quantity ?? ''
-  const itemPriceLabel = labels.itemPrice ?? ''
-  const removeLabel = labels.remove ?? ''
-  const addToWishlistLabel = labels.addToWishlist ?? ''
-  const itemTotalPriceLabel = labels.totalPrice ?? ''
+  const quantityLabel = labels.quantity ?? '';
+  const itemPriceLabel = labels.itemPrice ?? '';
+  const removeLabel = labels.remove ?? '';
+  const addToWishlistLabel = labels.addToWishlist ?? '';
+  const itemTotalPriceLabel = labels.totalPrice ?? '';
 
-  const grid = getGridConfig({ quantityLabel, itemPriceLabel })
+  const grid = getGridConfig({ quantityLabel, itemPriceLabel });
 
-  const gridSettings = grid[columns]?.[size]
+  const gridSettings = grid[columns]?.[size];
 
   if (!gridSettings) {
-    return null
+    return null;
   }
 
-  const gridTemplateAreas = gridSettings.areas
-  const gridTemplateColumns = gridSettings.columns
-  const gridTemplateRows = gridSettings.rows
-  const removeButtonType = gridSettings.removeButton
-  const imageSize = gridSettings.image
-  const quantityOptions = gridSettings.quantity
-  const priceOptions = gridSettings.price
+  const gridTemplateAreas = gridSettings.areas;
+  const gridTemplateColumns = gridSettings.columns;
+  const gridTemplateRows = gridSettings.rows;
+  const removeButtonType = gridSettings.removeButton;
+  const imageSize = gridSettings.image;
+  const quantityOptions = gridSettings.quantity;
+  const priceOptions = gridSettings.price;
 
   const getGridItemDisplayValue = (area: string, defaultDisplay?: string) => {
-    const shouldHide = !gridTemplateAreas.includes(area)
-    return shouldHide ? 'none' : defaultDisplay
-  }
+    const shouldHide = !gridTemplateAreas.includes(area);
+    return shouldHide ? 'none' : defaultDisplay;
+  };
 
-  const removeButtonLabel = `${removeLabel} ${name}`
-  const addToWishlistButtonLabel = `${addToWishlistLabel} ${name}`
+  const removeButtonLabel = `${removeLabel} ${name}`;
+  const addToWishlistButtonLabel = `${addToWishlistLabel} ${name}`;
 
   return (
     <Box>
@@ -242,12 +241,11 @@ export const HorizontalProductCardEditable = (
             mb={3}
           >
             {image && (
-              <Image
+              <img
                 src={image?.src}
                 alt={image?.alt}
                 height={Number(imageSize.height ?? 180)}
                 width={Number(imageSize.width ?? 145)}
-                quality={90}
                 style={{ objectFit: 'cover' }}
                 onClick={image?.onClickImage}
               />
@@ -261,7 +259,10 @@ export const HorizontalProductCardEditable = (
         >
           {brand}
         </GridItem>
-        <GridItem area="name" textStyle={'Desktop/Body-XS'}>
+        <GridItem
+          area="name"
+          textStyle={'Desktop/Body-XS'}
+        >
           {name}
         </GridItem>
         <GridItem
@@ -336,7 +337,11 @@ export const HorizontalProductCardEditable = (
             </Text>
           )}
         </GridItem>
-        <GridItem area="remove" display="flex" justifyContent="end">
+        <GridItem
+          area="remove"
+          display="flex"
+          justifyContent="end"
+        >
           {onRemove && (
             <>
               {removeButtonType === 'text' && (
@@ -404,5 +409,5 @@ export const HorizontalProductCardEditable = (
         </GridItem>
       </Grid>
     </Box>
-  )
-}
+  );
+};

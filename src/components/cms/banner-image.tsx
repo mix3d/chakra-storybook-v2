@@ -1,27 +1,26 @@
-import Image from 'next/image'
-import { Box, BoxProps } from '@chakra-ui/react'
+import { Box, type BoxProps } from '@chakra-ui/react';
 
 export interface BannerImageProps {
-  root?: BoxProps
-  imageBox?: BoxProps
+  root?: BoxProps;
+  imageBox?: BoxProps;
   imageDesktop?: {
-    src?: string
-    alt?: string
-  }
+    src?: string;
+    alt?: string;
+  };
   imageMobile?: {
-    src?: string
-    alt?: string
-  }
-  isSplit?: boolean
-  overlayBackground?: string | null
-  isLazy?: boolean | null
+    src?: string;
+    alt?: string;
+  };
+  isSplit?: boolean;
+  overlayBackground?: string | null;
+  isLazy?: boolean | null;
 }
 
 const imageBase: BoxProps = {
   position: 'relative',
   width: '100%',
   overflow: 'hidden',
-}
+};
 
 export const BannerImage = ({
   imageDesktop,
@@ -33,19 +32,25 @@ export const BannerImage = ({
   isSplit = false,
 }: BannerImageProps) => {
   if (!imageDesktop?.src && !imageMobile?.src) {
-    return null
+    return null;
   }
 
   return (
-    <Box display="flex" alignItems="stretch" {...root}>
-      <Box display={['none', 'none', 'block']} {...imageBase} {...imageBox}>
-        <Image
-          fill
+    <Box
+      display="flex"
+      alignItems="stretch"
+      {...root}
+    >
+      <Box
+        display={['none', 'none', 'block']}
+        {...imageBase}
+        {...imageBox}
+      >
+        <img
           src={imageDesktop?.src || imageMobile?.src || ''}
           alt={imageDesktop?.alt || imageMobile?.alt || ''}
           style={{ objectFit: 'cover' }}
           loading={isLazy ? 'lazy' : 'eager'}
-          priority={!isLazy}
           sizes={
             isSplit
               ? '(min-width: 1360px) 624px, 45.71vw'
@@ -64,14 +69,16 @@ export const BannerImage = ({
         )}
       </Box>
 
-      <Box display={['block', 'block', 'none']} {...imageBase} {...imageBox}>
-        <Image
-          fill
+      <Box
+        display={['block', 'block', 'none']}
+        {...imageBase}
+        {...imageBox}
+      >
+        <img
           src={imageMobile?.src || imageDesktop?.src || ''}
           alt={imageMobile?.alt || imageDesktop?.alt || ''}
           style={{ objectFit: 'cover' }}
           loading={isLazy ? 'lazy' : 'eager'}
-          priority={!isLazy}
           sizes={'50vw'}
         />
         {overlayBackground && (
@@ -86,5 +93,5 @@ export const BannerImage = ({
         )}
       </Box>
     </Box>
-  )
-}
+  );
+};

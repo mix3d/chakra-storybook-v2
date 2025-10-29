@@ -1,28 +1,28 @@
-import { Key, ReactNode } from 'react'
-import { AddIcon, CloseIcon } from '@chakra-ui/icons'
+import { type ReactNode } from 'react';
+import { AddIcon, CloseIcon } from '@chakra-ui/icons';
 import {
   Accordion as ChackraAccordion,
-  AccordionProps as ChackraAccordionProps,
+  type AccordionProps as ChackraAccordionProps,
   AccordionButton,
-  AccordionButtonProps as ChackraAccordionButtonProps,
+  type AccordionButtonProps as ChackraAccordionButtonProps,
   AccordionItem,
-  AccordionItemProps as ChackraAccordionItemProps,
+  type AccordionItemProps as ChackraAccordionItemProps,
   AccordionPanel,
-  AccordionPanelProps as ChackraAccordionPanelProps,
+  type AccordionPanelProps as ChackraAccordionPanelProps,
   Box,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 type DefaultStyleItemType = {
-  fontSize: string
-  height: string
-  iconSize: string
-}
+  fontSize: string;
+  height: string;
+  iconSize: string;
+};
 
 type DefaultStylesTypes = {
-  small: DefaultStyleItemType
-  medium: DefaultStyleItemType
-  large: DefaultStyleItemType
-}
+  small: DefaultStyleItemType;
+  medium: DefaultStyleItemType;
+  large: DefaultStyleItemType;
+};
 
 const DefaultStyles: DefaultStylesTypes = {
   small: {
@@ -40,31 +40,31 @@ const DefaultStyles: DefaultStylesTypes = {
     height: '15.5',
     iconSize: '11.25',
   },
-}
+};
 
 interface ItemProps extends AccordionItemProps {
-  defaultOpen: Boolean
+  defaultOpen: boolean;
 }
 
 export interface AccordionProps {
-  accordionButtonProps?: ChackraAccordionButtonProps
-  accordionItemProps?: ChackraAccordionItemProps
-  accordionPanelProps?: ChackraAccordionPanelProps
-  accordionProps?: ChackraAccordionProps
-  items: ItemProps[]
-  showLeftIcon?: boolean
-  showRightIcon?: boolean
-  size?: AccordionSize
+  accordionButtonProps?: ChackraAccordionButtonProps;
+  accordionItemProps?: ChackraAccordionItemProps;
+  accordionPanelProps?: ChackraAccordionPanelProps;
+  accordionProps?: ChackraAccordionProps;
+  items: ItemProps[];
+  showLeftIcon?: boolean;
+  showRightIcon?: boolean;
+  size?: AccordionSize;
 }
 
 export type AccordionItemProps = {
-  label: string
-  content?: ReactNode
-  isDisabled?: boolean
-  id: string
-}
+  label: string;
+  content?: ReactNode;
+  isDisabled?: boolean;
+  id: string;
+};
 
-export type AccordionSize = 'small' | 'medium' | 'large'
+export type AccordionSize = 'small' | 'medium' | 'large';
 
 export const Accordion = ({
   accordionButtonProps,
@@ -77,28 +77,35 @@ export const Accordion = ({
   size = 'medium',
 }: AccordionProps) => {
   if (!items || items.length === 0) {
-    return null
+    return null;
   }
 
   const defaultIndex = items.reduce(
     (arr: number[], item, idx) => (item.defaultOpen ? [...arr, idx] : arr),
     []
-  )
+  );
 
   const renderLeftIcon = (fontSize: string) => (
-    <AddIcon fontSize={fontSize} mr={4} />
-  )
+    <AddIcon
+      fontSize={fontSize}
+      mr={4}
+    />
+  );
 
   const renderRightIcon = (isExpanded: boolean, fontSize: string) => {
     return isExpanded ? (
       <CloseIcon fontSize={fontSize} />
     ) : (
       <AddIcon fontSize={fontSize} />
-    )
-  }
+    );
+  };
 
   return (
-    <Box display="flex" flexDirection="column" justifyContent="center">
+    <Box
+      display="flex"
+      flexDirection="column"
+      justifyContent="center"
+    >
       <ChackraAccordion
         allowToggle
         width="100%"
@@ -146,9 +153,9 @@ export const Accordion = ({
                 </>
               )}
             </AccordionItem>
-          )
+          );
         })}
       </ChackraAccordion>
     </Box>
-  )
-}
+  );
+};

@@ -1,29 +1,28 @@
-import { forwardRef } from 'react'
-import { KeenSliderOptions, useKeenSlider } from 'keen-slider/react'
+import { forwardRef } from 'react';
+import { type KeenSliderOptions, useKeenSlider } from 'keen-slider/react';
 import {
   Box,
-  BoxProps,
+  type BoxProps,
   Flex,
-  FlexProps,
+  type FlexProps,
   IconButton,
-  IconButtonProps,
-} from '@chakra-ui/react'
+  type IconButtonProps,
+} from '@chakra-ui/react';
 
-export const Carousel = forwardRef<HTMLDivElement, FlexProps>(function Carousel(
-  props,
-  ref
-) {
-  return (
-    <Flex
-      ref={ref}
-      className="chakra-carousel"
-      overflow="hidden"
-      position="relative"
-      userSelect="none"
-      {...props}
-    />
-  )
-})
+export const Carousel = forwardRef<HTMLDivElement, FlexProps>(
+  function Carousel(props, ref) {
+    return (
+      <Flex
+        ref={ref}
+        className="chakra-carousel"
+        overflow="hidden"
+        position="relative"
+        userSelect="none"
+        {...props}
+      />
+    );
+  }
+);
 
 export const CarouselSlide = (props: BoxProps) => (
   <Box
@@ -35,7 +34,7 @@ export const CarouselSlide = (props: BoxProps) => (
     transform="translate3d(0, 0, 0)"
     {...props}
   />
-)
+);
 
 export const CarouselIconButton = (props: IconButtonProps) => (
   <IconButton
@@ -54,9 +53,9 @@ export const CarouselIconButton = (props: IconButtonProps) => (
     _focusVisible={{ boxShadow: 'outline' }}
     {...props}
   />
-)
+);
 
 export const useCarousel = (options?: KeenSliderOptions) => {
-  const defaultOptions = { selector: '.chakra-carousel__slide' }
-  return useKeenSlider<HTMLDivElement>({ ...defaultOptions, ...options })
-}
+  const defaultOptions = { selector: '.chakra-carousel__slide' };
+  return useKeenSlider<HTMLDivElement>({ ...defaultOptions, ...options });
+};

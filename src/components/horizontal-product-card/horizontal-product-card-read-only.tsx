@@ -5,16 +5,14 @@ import {
   Text,
   CloseButton,
   AspectRatio,
-} from '@chakra-ui/react'
-import { HorizontalProductCardCommon, ProductCardLayout } from './types'
-import Image from 'next/image'
+} from '@chakra-ui/react';
+import type { HorizontalProductCardCommon, ProductCardLayout } from './types';
 
-export interface HorizontalProductCardReadOnlyProps
-  extends HorizontalProductCardCommon {}
+export type HorizontalProductCardReadOnlyProps = HorizontalProductCardCommon;
 
 const getGridConfig: (labels: {
-  quantityLabel: string
-  itemPriceLabel: string
+  quantityLabel: string;
+  itemPriceLabel: string;
 }) => ProductCardLayout = ({ quantityLabel, itemPriceLabel }) => ({
   2: {
     sm: {
@@ -149,7 +147,7 @@ const getGridConfig: (labels: {
     },
   },
   5: null,
-})
+});
 
 export const HorizontalProductCardReadOnly = (
   props: HorizontalProductCardReadOnlyProps
@@ -164,35 +162,35 @@ export const HorizontalProductCardReadOnly = (
     quantity,
     metaText,
     labels,
-  } = props
-  const { columns = 3, size = 'lg' } = props
-  const { onRemove, onAddToWishlist } = props
+  } = props;
+  const { columns = 3, size = 'lg' } = props;
+  const { onRemove, onAddToWishlist } = props;
 
-  const quantityLabel = labels.quantity ?? ''
-  const itemPriceLabel = labels.itemPrice ?? ''
-  const removeLabel = labels.remove ?? ''
-  const addToWishlistLabel = labels.addToWishlist ?? ''
+  const quantityLabel = labels.quantity ?? '';
+  const itemPriceLabel = labels.itemPrice ?? '';
+  const removeLabel = labels.remove ?? '';
+  const addToWishlistLabel = labels.addToWishlist ?? '';
 
-  const grid = getGridConfig({ quantityLabel, itemPriceLabel })
+  const grid = getGridConfig({ quantityLabel, itemPriceLabel });
 
-  const gridSettings = grid[columns]?.[size]
+  const gridSettings = grid[columns]?.[size];
 
   if (!gridSettings) {
-    return null
+    return null;
   }
 
-  const gridTemplateAreas = gridSettings.areas
-  const gridTemplateColumns = gridSettings.columns
-  const gridTemplateRows = gridSettings.rows
-  const removeButtonType = gridSettings.removeButton
-  const imageSize = gridSettings.image
-  const quantityOptions = gridSettings.quantity
-  const priceOptions = gridSettings.price
+  const gridTemplateAreas = gridSettings.areas;
+  const gridTemplateColumns = gridSettings.columns;
+  const gridTemplateRows = gridSettings.rows;
+  const removeButtonType = gridSettings.removeButton;
+  const imageSize = gridSettings.image;
+  const quantityOptions = gridSettings.quantity;
+  const priceOptions = gridSettings.price;
 
   const getGridItemDisplayValue = (area: string) => {
-    const shouldHide = !gridTemplateAreas.includes(area)
-    return shouldHide ? 'none' : undefined
-  }
+    const shouldHide = !gridTemplateAreas.includes(area);
+    return shouldHide ? 'none' : undefined;
+  };
 
   return (
     <Box>
@@ -213,12 +211,11 @@ export const HorizontalProductCardReadOnly = (
             cursor={image?.onClickImage ? 'pointer' : undefined}
             mb={3}
           >
-            <Image
+            <img
               src={image?.src ?? ''}
               alt={image?.alt ?? ''}
               height={Number(imageSize.height ?? 180)}
               width={Number(imageSize.width ?? 145)}
-              quality={90}
               style={{ objectFit: 'cover' }}
               onClick={image?.onClickImage}
             />
@@ -265,7 +262,11 @@ export const HorizontalProductCardReadOnly = (
             {salePrice}
           </Text>
         </GridItem>
-        <GridItem area="remove" display="flex" justifyContent="end">
+        <GridItem
+          area="remove"
+          display="flex"
+          justifyContent="end"
+        >
           {onRemove && (
             <>
               {removeButtonType === 'text' && (
@@ -280,7 +281,11 @@ export const HorizontalProductCardReadOnly = (
                 </Text>
               )}
               {removeButtonType === 'icon' && (
-                <CloseButton size="sm" isDisabled={false} onClick={onRemove} />
+                <CloseButton
+                  size="sm"
+                  isDisabled={false}
+                  onClick={onRemove}
+                />
               )}
             </>
           )}
@@ -315,7 +320,10 @@ export const HorizontalProductCardReadOnly = (
             {quantity}
           </Text>
         </GridItem>
-        <GridItem area="wishlist" display={getGridItemDisplayValue('wishlist')}>
+        <GridItem
+          area="wishlist"
+          display={getGridItemDisplayValue('wishlist')}
+        >
           {onAddToWishlist && (
             <Text
               fontSize={size === 'lg' ? 'xs' : 'xxs'}
@@ -336,5 +344,5 @@ export const HorizontalProductCardReadOnly = (
         </GridItem>
       </Grid>
     </Box>
-  )
-}
+  );
+};

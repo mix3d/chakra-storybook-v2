@@ -1,17 +1,16 @@
-import Image from 'next/image'
-import { Box, BoxProps } from '@chakra-ui/react'
+import { Box, type BoxProps } from '@chakra-ui/react';
 
 export interface ImageBannerProps {
-  rootProps?: Omit<BoxProps, 'children'>
-  priority?: boolean
+  rootProps?: Omit<BoxProps, 'children'>;
+  priority?: boolean;
   image?: {
-    src?: string
-    alt?: string
-  }
+    src?: string;
+    alt?: string;
+  };
   imageMobile?: {
-    src?: string
-    alt?: string
-  }
+    src?: string;
+    alt?: string;
+  };
 }
 
 export const ImageBanner = ({
@@ -21,7 +20,7 @@ export const ImageBanner = ({
   rootProps,
 }: ImageBannerProps) => {
   if (!image?.src && !imageMobile?.src) {
-    return null
+    return null;
   }
 
   return (
@@ -34,12 +33,9 @@ export const ImageBanner = ({
         overflow="hidden"
         display={['none', 'none', 'block']}
       >
-        <Image
-          priority={priority}
+        <img
           src={image?.src ?? imageMobile?.src ?? ''}
           alt={image?.alt ?? imageMobile?.alt ?? ''}
-          fill
-          sizes="100vw"
           style={{
             objectFit: 'cover',
           }}
@@ -53,17 +49,14 @@ export const ImageBanner = ({
         overflow="hidden"
         display={['block', 'block', 'none']}
       >
-        <Image
-          priority={priority}
+        <img
           src={imageMobile?.src ?? image?.src ?? ''}
           alt={imageMobile?.alt ?? image?.alt ?? ''}
-          fill
-          sizes="100vw"
           style={{
             objectFit: 'cover',
           }}
         />
       </Box>
     </>
-  )
-}
+  );
+};
