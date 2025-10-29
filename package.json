@@ -17,11 +17,13 @@
     "@chakra-ui/theme-tools": "^2.0.5",
     "@emotion/react": "^11.9.3",
     "@emotion/styled": "^11.9.3",
+    "@fontsource/dm-sans": "^5.2.8",
+    "@fontsource/raleway": "^5.2.8",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
+    "react-icons": "^5.5.0",
     "react-intl": "^7.0.0",
-    "@fontsource/dm-sans": "^5.2.8",
-    "@fontsource/raleway": "^5.2.8"
+    "react-hook-form": "^7.34.2"
   },
   "devDependencies": {
     "@chakra-ui/anatomy": "^2.1.1",
