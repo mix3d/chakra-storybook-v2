@@ -1,13 +1,13 @@
 import {
   Alert,
   AlertDescription,
-  AlertDescriptionProps,
+  type AlertDescriptionProps,
   AlertIcon,
-  AlertProps,
+  type AlertProps,
   AlertTitle,
   Box,
   CloseButton,
-  CloseButtonProps,
+  type CloseButtonProps,
   useColorModeValue,
   useDisclosure,
 } from '@chakra-ui/react'
@@ -23,11 +23,11 @@ interface AlertBoxProps {
 
 export const AlertBox = (props: AlertBoxProps) => {
   const {
-    alertDescriptionProps,
-    closeButtonProps,
+    type alertDescriptionProps,
+    type closeButtonProps,
     description,
     onClick,
-    rootProps,
+    type rootProps,
     title,
   } = props
 

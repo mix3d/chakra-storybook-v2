@@ -1,49 +1,55 @@
-import { useState } from 'react'
-import Image from 'next/image'
-import NextLink from 'next/link'
+import { useState } from 'react';
 import {
   AspectRatio,
   Box,
   IconButton,
-  IconButtonProps,
+  type IconButtonProps,
   Link,
   Skeleton,
   Stack,
-  StackProps,
-} from '@chakra-ui/react'
-import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5'
-import { Carousel, CarouselSlide, useCarousel } from './carousel'
+  type StackProps,
+} from '@chakra-ui/react';
+import { IoChevronBackOutline, IoChevronForwardOutline } from 'react-icons/io5';
+import { Carousel, CarouselSlide, useCarousel } from './carousel';
 
 interface GalleryProps {
-  aspectRatio?: number
-  href?: string
-  images?: Array<{ src: string; alt: string; priority?: boolean }>
-  productName?: String
-  rootProps?: StackProps
+  aspectRatio?: number;
+  href?: string;
+  images?: Array<{ src: string; alt: string; priority?: boolean }>;
+  productName?: string;
+  rootProps?: StackProps;
 }
 
 export const Gallery = (props: GalleryProps) => {
-  const { images, aspectRatio = 3 / 4, rootProps, productName = '' } = props
-  const [currentSlide, setCurrentSlide] = useState(0)
+  const { images, aspectRatio = 3 / 4, rootProps, productName = '' } = props;
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const [ref, slider] = useCarousel({
-    slideChanged: (slider) => setCurrentSlide(slider.track.details.rel),
-  })
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    slideChanged: (slider: any) => setCurrentSlide(slider.track.details.rel),
+  });
 
   if (!images) {
     return (
-      <Stack spacing="4" {...rootProps}>
+      <Stack
+        spacing="4"
+        {...rootProps}
+      >
         <ElementLinkHandler href={props.href}>
-          <AspectRatio ratio={aspectRatio} width="100%" bg="gray.200">
+          <AspectRatio
+            ratio={aspectRatio}
+            width="100%"
+            bg="gray.200"
+          >
             <Skeleton width="100%" />
           </AspectRatio>
         </ElementLinkHandler>
       </Stack>
-    )
+    );
   }
 
-  const hasPrevious = currentSlide !== 0
-  const hasNext = currentSlide < images.length - 1
+  const hasPrevious = currentSlide !== 0;
+  const hasNext = currentSlide < images.length - 1;
 
   return (
     <Stack
@@ -75,12 +81,11 @@ export const Gallery = (props: GalleryProps) => {
                 margin={'2px'}
                 _hover={{ opacity: 1 }}
               >
-                <Image
+                <img
                   alt={`View large product image ${i + 1} of ${
                     images.length
                   }. ${image.alt || productName}`}
                   src={image.src}
-                  priority={image.priority}
                   width={64}
                   height={64}
                   style={{
@@ -116,15 +121,14 @@ export const Gallery = (props: GalleryProps) => {
                     aspectRatio: '3/4',
                   }}
                 >
-                  <Image
-                    fill
+                  <img
                     alt={`View large product image ${i + 1} of ${
                       images.length
                     }. ${image.alt || productName}`}
                     src={image.src}
-                    priority={image.priority}
-                    sizes="(max-width: 640px) 80vw, (max-width: 768px) 70vw, (max-width: 1024px) 70vw, 50vw"
                     style={{
+                      width: '100%',
+                      height: '100%',
                       objectFit: 'contain',
                     }}
                     loading={i === 0 ? 'eager' : 'lazy'}
@@ -159,8 +163,8 @@ export const Gallery = (props: GalleryProps) => {
         )}
       </Box>
     </Stack>
-  )
-}
+  );
+};
 
 const CarouselIconButton = (props: IconButtonProps) => (
   <IconButton
@@ -173,17 +177,15 @@ const CarouselIconButton = (props: IconButtonProps) => (
     }}
     {...props}
   />
-)
+);
 
 const ElementLinkHandler = (props: {
-  children: JSX.Element
-  href?: string
+  children: JSX.Element;
+  href?: string;
 }) => {
   return props.href ? (
-    <Link as={NextLink} href={props.href}>
-      {props.children}
-    </Link>
+    <Link href={props.href}>{props.children}</Link>
   ) : (
     props.children
-  )
-}
+  );
+};

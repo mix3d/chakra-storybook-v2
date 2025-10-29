@@ -1,21 +1,21 @@
-import { FieldError } from 'react-hook-form'
+import { FieldError } from 'react-hook-form';
 import {
   Textarea,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  TextareaProps,
+  type TextareaProps,
   Flex,
-  FormLabelProps,
-} from '@chakra-ui/react'
+  type FormLabelProps,
+} from '@chakra-ui/react';
 
 interface TextareaFieldProps {
-  inputProps: TextareaProps
-  label: string
-  callToAction?: JSX.Element
-  error?: FieldError
-  formLabelProps?: FormLabelProps
-  isRequired?: boolean
+  inputProps: TextareaProps;
+  label: string;
+  callToAction?: JSX.Element;
+  error?: FieldError;
+  formLabelProps?: FormLabelProps;
+  isRequired?: boolean;
 }
 
 export const TextareaField = ({
@@ -26,13 +26,16 @@ export const TextareaField = ({
   formLabelProps,
   isRequired = false,
 }: TextareaFieldProps) => {
-  const { name } = inputProps
+  const { name } = inputProps;
   if (!name) {
-    return null
+    return null;
   }
 
   return (
-    <FormControl isInvalid={Boolean(error)} isRequired={isRequired}>
+    <FormControl
+      isInvalid={Boolean(error)}
+      isRequired={isRequired}
+    >
       <Flex justify="space-between">
         <FormLabel {...formLabelProps}>{label}</FormLabel>
         {callToAction}
@@ -40,5 +43,5 @@ export const TextareaField = ({
       <Textarea {...inputProps} />
       <FormErrorMessage>{error?.message}</FormErrorMessage>
     </FormControl>
-  )
-}
+  );
+};

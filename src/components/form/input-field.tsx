@@ -1,24 +1,24 @@
-import { FieldError } from 'react-hook-form'
+import { FieldError } from 'react-hook-form';
 import {
   Flex,
   FormControl,
   FormErrorMessage,
   FormHelperText,
   FormLabel,
-  FormLabelProps,
+  type FormLabelProps,
   Input,
-  InputProps,
+  type InputProps,
   Text,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 interface InputFieldProps {
-  inputProps: InputProps
-  label: string
-  callToAction?: JSX.Element
-  error?: FieldError
-  formLabelProps?: FormLabelProps
-  isRequired?: boolean
-  caption?: string
+  inputProps: InputProps;
+  label: string;
+  callToAction?: JSX.Element;
+  error?: FieldError;
+  formLabelProps?: FormLabelProps;
+  isRequired?: boolean;
+  caption?: string;
 }
 
 export const InputField = ({
@@ -30,13 +30,16 @@ export const InputField = ({
   isRequired = false,
   caption,
 }: InputFieldProps) => {
-  const { name } = inputProps
+  const { name } = inputProps;
   if (!name) {
-    return null
+    return null;
   }
 
   return (
-    <FormControl isInvalid={Boolean(error)} isRequired={isRequired}>
+    <FormControl
+      isInvalid={Boolean(error)}
+      isRequired={isRequired}
+    >
       <Flex justify="space-between">
         <FormLabel
           fontSize="sm"
@@ -52,5 +55,5 @@ export const InputField = ({
       <FormErrorMessage>{error?.message}</FormErrorMessage>
       {caption && <FormHelperText fontSize="xs">{caption}</FormHelperText>}
     </FormControl>
-  )
-}
+  );
+};

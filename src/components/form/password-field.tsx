@@ -1,35 +1,35 @@
-import { forwardRef, useRef } from 'react'
-import { FieldError } from 'react-hook-form'
-import { HiEye, HiEyeOff } from 'react-icons/hi'
+import { forwardRef, useRef } from 'react';
+import { FieldError } from 'react-hook-form';
+import { HiEye, HiEyeOff } from 'react-icons/hi';
 import {
   Flex,
   FormControl,
   FormErrorMessage,
   FormLabel,
-  FormLabelProps,
+  type FormLabelProps,
   IconButton,
   Input,
   InputGroup,
-  InputProps,
+  type InputProps,
   InputRightElement,
   Text,
   useDisclosure,
   useMergeRefs,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 interface PasswordFieldProps {
-  inputProps: Omit<InputProps, 'type'>
-  label: string
-  callToAction?: JSX.Element
-  error?: FieldError
-  formLabelProps?: FormLabelProps
-  isRequired?: boolean
+  inputProps: Omit<InputProps, 'type'>;
+  label: string;
+  callToAction?: JSX.Element;
+  error?: FieldError;
+  formLabelProps?: FormLabelProps;
+  isRequired?: boolean;
   messages: {
     password: {
-      mask: string
-      reveal: string
-    }
-  }
+      mask: string;
+      reveal: string;
+    };
+  };
 }
 
 export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
@@ -45,24 +45,27 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
     },
     ref
   ) => {
-    const { isOpen, onToggle } = useDisclosure()
-    const inputRef = useRef<HTMLInputElement>(null)
-    const mergeRef = useMergeRefs(inputRef, ref)
-    const { name } = inputProps
+    const { isOpen, onToggle } = useDisclosure();
+    const inputRef = useRef<HTMLInputElement>(null);
+    const mergeRef = useMergeRefs(inputRef, ref);
+    const { name } = inputProps;
 
     if (!name) {
-      return null
+      return null;
     }
 
     const onClickReveal = () => {
-      onToggle()
+      onToggle();
       if (inputRef.current) {
-        inputRef.current.focus({ preventScroll: true })
+        inputRef.current.focus({ preventScroll: true });
       }
-    }
+    };
 
     return (
-      <FormControl isInvalid={Boolean(error)} isRequired={isRequired}>
+      <FormControl
+        isInvalid={Boolean(error)}
+        isRequired={isRequired}
+      >
         <Flex justify="space-between">
           <FormLabel
             fontSize="sm"
@@ -96,8 +99,8 @@ export const PasswordField = forwardRef<HTMLInputElement, PasswordFieldProps>(
         </InputGroup>
         <FormErrorMessage>{error?.message}</FormErrorMessage>
       </FormControl>
-    )
+    );
   }
-)
+);
 
-PasswordField.displayName = 'PasswordField'
+PasswordField.displayName = 'PasswordField';

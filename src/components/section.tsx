@@ -1,8 +1,14 @@
-import { Box, BoxProps, Flex, Text, TextProps } from '@chakra-ui/react'
+import {
+  Box,
+  type BoxProps,
+  Flex,
+  Text,
+  type TextProps,
+} from '@chakra-ui/react';
 
 interface SectionProps {
-  boxProps?: BoxProps
-  children: React.ReactNode
+  boxProps?: BoxProps;
+  children: React.ReactNode;
 }
 
 export const Section = ({ boxProps, children }: SectionProps) => {
@@ -16,15 +22,15 @@ export const Section = ({ boxProps, children }: SectionProps) => {
     >
       {children}
     </Box>
-  )
-}
+  );
+};
 
 interface SectionHeaderProps {
-  requiredMarkText?: string
-  requiredMarkTextProps?: TextProps
-  textProps?: TextProps
-  boxProps?: BoxProps
-  title?: string | JSX.Element
+  requiredMarkText?: string;
+  requiredMarkTextProps?: TextProps;
+  textProps?: TextProps;
+  boxProps?: BoxProps;
+  title?: string | JSX.Element;
 }
 
 export const SectionHeader = ({
@@ -35,9 +41,17 @@ export const SectionHeader = ({
   title,
 }: SectionHeaderProps) => {
   return (
-    <Flex justify={'space-between'} marginBottom={'1.5rem'} {...boxProps}>
+    <Flex
+      justify={'space-between'}
+      marginBottom={'1.5rem'}
+      {...boxProps}
+    >
       {title && (
-        <Text as="h2" textStyle={'Desktop/L'} {...textProps}>
+        <Text
+          as="h2"
+          textStyle={'Desktop/L'}
+          {...textProps}
+        >
           {title}
         </Text>
       )}
@@ -48,16 +62,20 @@ export const SectionHeader = ({
         />
       )}
     </Flex>
-  )
-}
+  );
+};
 
 const RequiredMark = ({
   requiredMarkText,
   requiredMarkTextProps,
 }: Pick<SectionHeaderProps, 'requiredMarkTextProps' | 'requiredMarkText'>) => {
   return (
-    <Text textStyle={'Body-S'} color={'text-muted'} {...requiredMarkTextProps}>
+    <Text
+      textStyle={'Body-S'}
+      color={'text-muted'}
+      {...requiredMarkTextProps}
+    >
       {requiredMarkText}
     </Text>
-  )
-}
+  );
+};

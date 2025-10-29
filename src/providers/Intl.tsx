@@ -1,5 +1,6 @@
 import { IntlProvider as ReactIntlProvider } from 'react-intl';
 import { useCommerce } from './useCommerce';
+import type { JSX } from 'react';
 // import { api } from 'utils/api';
 
 interface Props {

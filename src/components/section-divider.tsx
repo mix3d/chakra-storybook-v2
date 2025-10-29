@@ -1,9 +1,15 @@
-import { BoxProps, Divider, HStack, Text, TextProps } from '@chakra-ui/react'
+import {
+  type BoxProps,
+  Divider,
+  HStack,
+  Text,
+  type TextProps,
+} from '@chakra-ui/react';
 
 export interface SectionDividerProps {
-  text?: string
-  textProps?: TextProps
-  containerProps?: BoxProps
+  text?: string;
+  textProps?: TextProps;
+  containerProps?: BoxProps;
 }
 
 export const SectionDivider = ({
@@ -12,15 +18,19 @@ export const SectionDivider = ({
   containerProps,
 }: SectionDividerProps) => {
   if (!text) {
-    return <Divider {...containerProps} />
+    return <Divider {...containerProps} />;
   }
   return (
     <HStack {...containerProps}>
       <Divider />
-      <Text color={'text-muted'} {...textProps} whiteSpace="nowrap">
+      <Text
+        color={'text-muted'}
+        {...textProps}
+        whiteSpace="nowrap"
+      >
         {text}
       </Text>
       <Divider />
     </HStack>
-  )
-}
+  );
+};

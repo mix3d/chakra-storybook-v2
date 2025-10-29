@@ -1,17 +1,17 @@
-import { Box, BoxProps } from '@chakra-ui/react'
-import { BannerImage, BannerImageProps } from './banner-image'
-import { BannerText, BannerTextProps } from './banner-text'
+import { Box, type BoxProps } from '@chakra-ui/react';
+import { BannerImage, type BannerImageProps } from './banner-image';
+import { BannerText, type BannerTextProps } from './banner-text';
 
 export interface BannerFullProps {
-  image?: BannerImageProps
-  overlayBackground?: string | null
-  text?: BannerTextProps
-  textPosition?: BannerFullTextPosition
-  theme?: BannerFullTheme
+  image?: BannerImageProps;
+  overlayBackground?: string | null;
+  text?: BannerTextProps;
+  textPosition?: BannerFullTextPosition;
+  theme?: BannerFullTheme;
 }
 
-type BannerFullTextPosition = 'left' | 'center' | 'right'
-type BannerFullTheme = 'dark' | 'light'
+type BannerFullTextPosition = 'left' | 'center' | 'right';
+type BannerFullTheme = 'dark' | 'light';
 
 export const BannerFull = ({
   text,
@@ -20,7 +20,7 @@ export const BannerFull = ({
   theme = 'dark',
   overlayBackground = overlayBackgroundValue[theme],
 }: BannerFullProps) => {
-  const textPositionProps = getTextPositionProps()
+  const textPositionProps = getTextPositionProps();
 
   return (
     <Box
@@ -98,12 +98,12 @@ export const BannerFull = ({
             variant: theme === 'dark' ? 'outline' : 'outline-alt',
             ...text?.ctaButtonSecondary,
             ...el,
-          }
+          };
         })}
       />
     </Box>
-  )
-}
+  );
+};
 
 const parentSizeProps: BoxProps = {
   position: 'absolute',
@@ -111,7 +111,7 @@ const parentSizeProps: BoxProps = {
   left: '0',
   width: '100%',
   height: '100%',
-}
+};
 
 const getTextPositionProps = (): Record<BannerFullTextPosition, BoxProps> => {
   return {
@@ -127,10 +127,10 @@ const getTextPositionProps = (): Record<BannerFullTextPosition, BoxProps> => {
       width: ['100%', '100%', '50%'],
       marginLeft: ['auto', 'auto', '50%'],
     },
-  }
-}
+  };
+};
 
 const overlayBackgroundValue: Record<BannerFullTheme, string> = {
   light: 'rgba(0, 0, 0, 0.4)',
   dark: 'rgba(255, 255, 255, 0.2)',
-}
+};

@@ -1,23 +1,22 @@
-import NextLink from 'next/link'
 import {
   Box,
-  BoxProps,
+  type BoxProps,
   Button,
-  ButtonProps,
+  type ButtonProps,
   HStack,
-  StackProps,
-} from '@chakra-ui/react'
+  type StackProps,
+} from '@chakra-ui/react';
 
 export interface BannerTextProps {
-  root?: BoxProps
-  eyebrow?: BoxProps
-  title?: BoxProps
-  body?: BoxProps
-  ctaButtonBox?: StackProps
-  ctaButtonPrimary?: ButtonProps & { href?: string }
-  ctaButtonSecondary?: ButtonProps & { href?: string }
-  ctaLinkBox?: BoxProps
-  ctaLinkItems?: (ButtonProps & { href?: string })[]
+  root?: BoxProps;
+  eyebrow?: BoxProps;
+  title?: BoxProps;
+  body?: BoxProps;
+  ctaButtonBox?: StackProps;
+  ctaButtonPrimary?: ButtonProps & { href?: string };
+  ctaButtonSecondary?: ButtonProps & { href?: string };
+  ctaLinkBox?: BoxProps;
+  ctaLinkItems?: (ButtonProps & { href?: string })[];
 }
 
 export const BannerText = ({
@@ -32,20 +31,27 @@ export const BannerText = ({
   ctaLinkItems,
 }: BannerTextProps) => {
   const { children: ctaButtonBoxChildren, ...ctaButtonBoxProps } =
-    ctaButtonBox ?? {}
+    ctaButtonBox ?? {};
   const renderCtaButtonBox = Boolean(
     ctaButtonBox?.children ||
       ctaButtonPrimary?.children ||
       ctaButtonSecondary?.children
-  )
+  );
 
-  const renderCtaLinkBox = Boolean(ctaLinkBox?.children || ctaLinkItems?.length)
-  const { children: ctaLinkBoxChildren, ...ctaLinkBoxProps } = ctaLinkBox ?? {}
+  const renderCtaLinkBox = Boolean(
+    ctaLinkBox?.children || ctaLinkItems?.length
+  );
+  const { children: ctaLinkBoxChildren, ...ctaLinkBoxProps } = ctaLinkBox ?? {};
 
   return (
     <Box {...root}>
       {eyebrow?.children && <Box {...eyebrow} />}
-      {title?.children && <Box my={2} {...title} />}
+      {title?.children && (
+        <Box
+          my={2}
+          {...title}
+        />
+      )}
       {body?.children && <Box {...body} />}
 
       {renderCtaButtonBox && (
@@ -57,20 +63,20 @@ export const BannerText = ({
           {...ctaButtonBoxProps}
         >
           {ctaButtonBox?.children ? (
-            <div>{ctaButtonBox?.children}</div>
+            <div>{ctaButtonBoxChildren}</div>
           ) : (
             <>
               {ctaButtonPrimary?.children && (
                 <Button
                   href={ctaButtonPrimary.href ?? ''}
-                  as={NextLink}
+                  as="a"
                   {...ctaButtonPrimary}
                 />
               )}
               {ctaButtonSecondary?.children && (
                 <Button
                   href={ctaButtonSecondary.href ?? ''}
-                  as={NextLink}
+                  as="a"
                   {...ctaButtonSecondary}
                 />
               )}
@@ -88,25 +94,25 @@ export const BannerText = ({
           flexWrap="wrap"
           {...ctaLinkBoxProps}
         >
-          {ctaLinkBox?.children ? (
-            ctaLinkBox?.children
+          {ctaLinkBoxChildren ? (
+            ctaLinkBoxChildren
           ) : (
             <>
               {ctaLinkItems?.map((buttonProps, i) => {
-                const { href = '', ...__buttonProps } = buttonProps
+                const { href = '', ...__buttonProps } = buttonProps;
                 return (
                   <Button
                     key={`${href}-${i}`}
-                    as={NextLink}
+                    as="a"
                     href={href}
                     {...__buttonProps}
                   />
-                )
+                );
               })}
             </>
           )}
         </Box>
       )}
     </Box>
-  )
-}
+  );
+};

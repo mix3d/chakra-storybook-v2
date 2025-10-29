@@ -1,29 +1,28 @@
-import { FieldError } from 'react-hook-form'
+import { FieldError } from 'react-hook-form';
 import {
   Box,
-  BoxProps,
+  type BoxProps,
   Checkbox,
-  CheckboxProps,
+  type CheckboxProps,
   Flex,
   FormControl,
-  FormControlProps,
+  type FormControlProps,
   FormErrorMessage,
   FormLabel,
-  FormLabelProps,
-  Text,
-} from '@chakra-ui/react'
+  type FormLabelProps,
+} from '@chakra-ui/react';
 
 interface CheckboxFieldProps {
-  checkboxProps: CheckboxProps
-  content: string
-  contentProps?: BoxProps
-  rootProps?: FormControlProps
-  callToAction?: JSX.Element
-  displayLabel?: boolean
-  error?: FieldError
-  formLabelProps?: FormLabelProps
-  isRequired?: boolean
-  label?: string
+  checkboxProps: CheckboxProps;
+  content: string;
+  contentProps?: BoxProps;
+  rootProps?: FormControlProps;
+  callToAction?: JSX.Element;
+  displayLabel?: boolean;
+  error?: FieldError;
+  formLabelProps?: FormLabelProps;
+  isRequired?: boolean;
+  label?: string;
 }
 
 export const CheckboxField = ({
@@ -38,9 +37,9 @@ export const CheckboxField = ({
   isRequired = false,
   label = '',
 }: CheckboxFieldProps) => {
-  const { name } = checkboxProps
+  const { name } = checkboxProps;
   if (!name) {
-    return null
+    return null;
   }
 
   return (
@@ -51,17 +50,27 @@ export const CheckboxField = ({
     >
       {displayLabel && (
         <Flex justify="space-between">
-          <FormLabel height={{ base: '14px', md: '17px' }} {...formLabelProps}>
+          <FormLabel
+            height={{ base: '14px', md: '17px' }}
+            {...formLabelProps}
+          >
             {label}
           </FormLabel>
           {callToAction}
         </Flex>
       )}
-      <Checkbox height={{ base: '1rem', md: '1.5rem' }} {...checkboxProps}>
+      <Checkbox
+        height={{ base: '1rem', md: '1.5rem' }}
+        {...checkboxProps}
+      >
         <Box {...contentProps}>
           {content}
           {isRequired && (
-            <Box display={'inline-block'} color={'dangerMed'} fontSize={'1rem'}>
+            <Box
+              display={'inline-block'}
+              color={'dangerMed'}
+              fontSize={'1rem'}
+            >
               &nbsp;*
             </Box>
           )}
@@ -69,5 +78,5 @@ export const CheckboxField = ({
       </Checkbox>
       <FormErrorMessage>{error?.message}</FormErrorMessage>
     </FormControl>
-  )
-}
+  );
+};

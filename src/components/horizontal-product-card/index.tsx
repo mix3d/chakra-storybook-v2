@@ -1,24 +1,24 @@
 import {
   HorizontalProductCardEditable,
-  HorizontalProductCardEditableProps,
-} from './horizontal-product-card-editable'
+  type HorizontalProductCardEditableProps,
+} from './horizontal-product-card-editable';
 import {
   HorizontalProductCardReadOnly,
-  HorizontalProductCardReadOnlyProps,
-} from './horizontal-product-card-read-only'
+  type HorizontalProductCardReadOnlyProps,
+} from './horizontal-product-card-read-only';
 
 export type HorizontalProductCardProps = (
   | HorizontalProductCardEditableProps
   | HorizontalProductCardReadOnlyProps
 ) & {
-  editable?: boolean
-}
+  editable?: boolean;
+};
 
 export const HorizontalProductCard = (props: HorizontalProductCardProps) => {
-  const { editable } = props
+  const { editable } = props;
   return editable ? (
     <HorizontalProductCardEditable {...props} />
   ) : (
     <HorizontalProductCardReadOnly {...props} />
-  )
-}
+  );
+};

@@ -1,14 +1,14 @@
 import {
   Box,
   Container,
-  ContainerProps,
+  type ContainerProps,
   Heading,
   Skeleton,
   SkeletonText,
   Stack,
-  StackProps,
+  type StackProps,
   Text,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 export type SectionOptions =
   | 'accordion'
@@ -17,30 +17,34 @@ export type SectionOptions =
   | 'description'
   | 'main'
   | 'price'
-  | 'title'
+  | 'title';
 
 export interface PdpLayoutProps {
-  accordion?: JSX.Element
-  aside: JSX.Element
-  brand?: string | JSX.Element
-  breadcrumb?: JSX.Element
-  description: string | JSX.Element
-  isLoaded: boolean
-  main: JSX.Element
-  mainStackProps?: StackProps
-  price: JSX.Element
-  rootProps?: ContainerProps
-  sectionOrder?: SectionOptions[]
-  seo?: JSX.Element
-  stackProps?: StackProps
-  title: string
+  accordion?: JSX.Element;
+  aside: JSX.Element;
+  brand?: string | JSX.Element;
+  breadcrumb?: JSX.Element;
+  description: string | JSX.Element;
+  isLoaded: boolean;
+  main: JSX.Element;
+  mainStackProps?: StackProps;
+  price: JSX.Element;
+  rootProps?: ContainerProps;
+  sectionOrder?: SectionOptions[];
+  seo?: JSX.Element;
+  stackProps?: StackProps;
+  title: string;
 }
 
 const accordionSection = (accordion: JSX.Element, isLoaded: boolean) => (
-  <SkeletonText noOfLines={4} skeletonHeight="10" isLoaded={isLoaded}>
+  <SkeletonText
+    noOfLines={4}
+    skeletonHeight="10"
+    isLoaded={isLoaded}
+  >
     {accordion}
   </SkeletonText>
-)
+);
 const brandSection = (brand: string | JSX.Element, isLoaded: boolean) => (
   <SkeletonText
     noOfLines={1}
@@ -51,12 +55,16 @@ const brandSection = (brand: string | JSX.Element, isLoaded: boolean) => (
   >
     {brand}
   </SkeletonText>
-)
+);
 const breadcrumbSection = (breadcrumb: JSX.Element, isLoaded: boolean) => (
-  <SkeletonText noOfLines={1} skeletonHeight="6" isLoaded={isLoaded}>
+  <SkeletonText
+    noOfLines={1}
+    skeletonHeight="6"
+    isLoaded={isLoaded}
+  >
     {breadcrumb}
   </SkeletonText>
-)
+);
 const descriptionSection = (
   description: string | JSX.Element,
   isLoaded: boolean
@@ -68,11 +76,14 @@ const descriptionSection = (
     skeletonHeight="4"
     isLoaded={isLoaded}
   >
-    <Text textStyle={'Body-S'} color={'text'}>
+    <Text
+      textStyle={'Body-S'}
+      color={'text'}
+    >
       {description}
     </Text>
   </SkeletonText>
-)
+);
 const priceSection = (price: JSX.Element, isLoaded: boolean) => (
   <SkeletonText
     noOfLines={1}
@@ -83,7 +94,7 @@ const priceSection = (price: JSX.Element, isLoaded: boolean) => (
   >
     {price}
   </SkeletonText>
-)
+);
 const titleSection = (title: string, isLoaded: boolean) => (
   <Heading>
     <Skeleton
@@ -94,7 +105,7 @@ const titleSection = (title: string, isLoaded: boolean) => (
       {title}
     </Skeleton>
   </Heading>
-)
+);
 
 export const PdpLayout = ({
   accordion,
@@ -128,7 +139,7 @@ export const PdpLayout = ({
     main: isLoaded && main,
     price: priceSection(price, isLoaded),
     title: titleSection(title, isLoaded),
-  }
+  };
 
   return (
     <Box px={{ base: 2, md: 4 }}>
@@ -153,19 +164,31 @@ export const PdpLayout = ({
             layerStyle={'no-scroll-bar'}
             {...mainStackProps}
           >
-            <Stack m={0} p={1} overflowY={'scroll'}>
+            <Stack
+              m={0}
+              p={1}
+              overflowY={'scroll'}
+            >
               {sectionOrder.map((section) => (
-                <Box key={`${section}`} m={'none'} p={'none'} border={'none'}>
+                <Box
+                  key={`${section}`}
+                  m={'none'}
+                  p={'none'}
+                  border={'none'}
+                >
                   {sectionMap[section]}
                 </Box>
               ))}
             </Stack>
           </Stack>
-          <Box flex="1" overflow="hidden">
+          <Box
+            flex="1"
+            overflow="hidden"
+          >
             {aside}
           </Box>
         </Stack>
       </Container>
     </Box>
-  )
-}
+  );
+};

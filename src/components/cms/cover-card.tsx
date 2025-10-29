@@ -1,25 +1,23 @@
-import { Box, BoxProps, LinkOverlay } from '@chakra-ui/react'
-import Image from 'next/image'
-import NextLink from 'next/link'
+import { Box, type BoxProps, LinkOverlay } from '@chakra-ui/react';
 
 export interface CoverCardProps {
-  theme?: CoverCardTheme
-  textAlign?: CoverCardTextAlign
-  root?: Omit<BoxProps, 'children'>
+  theme?: CoverCardTheme;
+  textAlign?: CoverCardTextAlign;
+  root?: Omit<BoxProps, 'children'>;
   image?: {
-    src?: string
-    alt?: string
-    height?: number
-  }
-  eyebrow?: BoxProps
-  title?: BoxProps
-  description?: BoxProps
-  href?: string
-  overlayBackground?: string
+    src?: string;
+    alt?: string;
+    height?: number;
+  };
+  eyebrow?: BoxProps;
+  title?: BoxProps;
+  description?: BoxProps;
+  href?: string;
+  overlayBackground?: string;
 }
 
-export type CoverCardTheme = 'light' | 'dark'
-export type CoverCardTextAlign = 'left' | 'center' | 'right'
+export type CoverCardTheme = 'light' | 'dark';
+export type CoverCardTextAlign = 'left' | 'center' | 'right';
 
 export const CoverCard = ({
   theme = 'dark',
@@ -36,7 +34,7 @@ export const CoverCard = ({
     '280px',
     null,
     '428px',
-  ]
+  ];
 
   return (
     <Box
@@ -53,8 +51,7 @@ export const CoverCard = ({
         height={`${image?.height || '100'}%`}
       >
         {image?.src && (
-          <Image
-            fill
+          <img
             src={image.src ?? ''}
             alt={image?.alt ?? ''}
             style={{
@@ -97,9 +94,7 @@ export const CoverCard = ({
             layerStyle={`${theme}-text`}
             my={1}
           >
-            <NextLink href={href ?? ''} passHref>
-              <LinkOverlay>{title.children}</LinkOverlay>
-            </NextLink>
+            <LinkOverlay href={href ?? ''}>{title.children}</LinkOverlay>
           </Box>
         )}
         {description?.children && (
@@ -111,10 +106,10 @@ export const CoverCard = ({
         )}
       </Box>
     </Box>
-  )
-}
+  );
+};
 
 const overlayBackgroundValue: Record<CoverCardTheme, string> = {
   dark: 'rgba(0, 0, 0, 0.5)',
   light: 'rgba(255, 255, 255, 0.5)',
-}
+};

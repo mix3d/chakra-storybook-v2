@@ -1,28 +1,26 @@
-import NextLink from 'next/link'
-import Image from 'next/image'
 import {
   AspectRatio,
   Box,
-  BoxProps,
+  type BoxProps,
   Button,
-  ButtonProps,
+  type ButtonProps,
   LinkBox,
   LinkOverlay,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 export interface ProductCardProps {
-  root?: Omit<BoxProps, 'children'>
-  topLeft?: BoxProps
+  root?: Omit<BoxProps, 'children'>;
+  topLeft?: BoxProps;
   image?: {
-    src?: string
-    alt?: string
-    ratio?: number
-  }
-  brand?: BoxProps
-  name?: BoxProps
-  href?: string
-  price?: BoxProps
-  button?: ButtonProps
+    src?: string;
+    alt?: string;
+    ratio?: number;
+  };
+  brand?: BoxProps;
+  name?: BoxProps;
+  href?: string;
+  price?: BoxProps;
+  button?: ButtonProps;
 }
 
 export const ProductCard = ({
@@ -52,21 +50,22 @@ export const ProductCard = ({
           overflow="hidden"
           mb={3}
         >
-          <Image
+          <img
             src={image.src ?? ''}
             alt={image?.alt ?? ''}
-            fill
             style={{
               objectFit: 'contain',
             }}
-            sizes={
-              '(min-width: 1300px) 292px, (min-width: 1260px) calc(-350vw + 4772px), (min-width: 980px) calc(25.77vw + 42px), (min-width: 780px) calc(6.67vw + 298px), (min-width: 660px) calc(50vw - 72px), (min-width: 460px) 330px, (min-width: 380px) 76.67vw, calc(10vw + 228px)'
-            }
           />
         </AspectRatio>
       )}
       {topLeft?.children && (
-        <Box position="absolute" top="0" left="0" {...topLeft} />
+        <Box
+          position="absolute"
+          top="0"
+          left="0"
+          {...topLeft}
+        />
       )}
       {brand?.children && (
         <Box
@@ -81,9 +80,7 @@ export const ProductCard = ({
           textColor="text"
           my={1}
         >
-          <LinkOverlay as={NextLink} href={href ?? ''}>
-            {name.children}
-          </LinkOverlay>
+          <LinkOverlay href={href ?? ''}>{name.children}</LinkOverlay>
         </Box>
       )}
       {price?.children && (
@@ -93,7 +90,14 @@ export const ProductCard = ({
           {...price}
         />
       )}
-      {button?.children && <Button mt={3} size="md" width="full" {...button} />}
+      {button?.children && (
+        <Button
+          mt={3}
+          size="md"
+          width="full"
+          {...button}
+        />
+      )}
     </LinkBox>
-  )
-}
+  );
+};

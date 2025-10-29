@@ -2,27 +2,27 @@ import {
   Center,
   Flex,
   FormControl,
-  FormControlProps,
+  type FormControlProps,
   FormLabel,
   IconButton,
-  IconButtonProps,
+  type IconButtonProps,
   Text,
   useControllableState,
-  UseControllableStateProps,
+  type UseControllableStateProps,
   VisuallyHidden,
-} from '@chakra-ui/react'
-import { FiMinus, FiPlus } from 'react-icons/fi'
+} from '@chakra-ui/react';
+import { FiMinus, FiPlus } from 'react-icons/fi';
 
 interface QuantityPickerProps {
-  buttonProps?: Partial<IconButtonProps>
-  controllableStateProps: UseControllableStateProps<number>
-  hideLabel?: boolean
-  isLoading?: boolean
-  label?: string
-  max?: number
-  min?: number
-  rootProps?: FormControlProps
-  size?: 'lg' | 'sm'
+  buttonProps?: Partial<IconButtonProps>;
+  controllableStateProps: UseControllableStateProps<number>;
+  hideLabel?: boolean;
+  isLoading?: boolean;
+  label?: string;
+  max?: number;
+  min?: number;
+  rootProps?: FormControlProps;
+  size?: 'lg' | 'sm';
 }
 
 export const QuantityPicker = (props: QuantityPickerProps) => {
@@ -36,20 +36,26 @@ export const QuantityPicker = (props: QuantityPickerProps) => {
     buttonProps,
     controllableStateProps,
     size = 'lg',
-  } = props
+  } = props;
 
-  const [value, setValue] = useControllableState(controllableStateProps)
-  const handleDecrement = () => setValue(value === min ? value : value - 1)
-  const handleIncrement = () => setValue(value === max ? value : value + 1)
+  const [value, setValue] = useControllableState(controllableStateProps);
+  const handleDecrement = () => setValue(value === min ? value : value - 1);
+  const handleIncrement = () => setValue(value === max ? value : value + 1);
 
   return (
-    <FormControl aria-label={`${label} selected is ${value}`} {...rootProps}>
+    <FormControl
+      aria-label={`${label} selected is ${value}`}
+      {...rootProps}
+    >
       {hideLabel ? (
         <VisuallyHidden>
           <FormLabel>{label}</FormLabel>
         </VisuallyHidden>
       ) : (
-        <FormLabel fontSize="sm" fontWeight="medium">
+        <FormLabel
+          fontSize="sm"
+          fontWeight="medium"
+        >
           {label}
         </FormLabel>
       )}
@@ -68,7 +74,11 @@ export const QuantityPicker = (props: QuantityPickerProps) => {
           {...buttonProps}
         />
         <Center minW="8">
-          <Text as="span" fontWeight="semibold" userSelect="none">
+          <Text
+            as="span"
+            fontWeight="semibold"
+            userSelect="none"
+          >
             {value}
           </Text>
         </Center>
@@ -81,9 +91,14 @@ export const QuantityPicker = (props: QuantityPickerProps) => {
         />
       </Flex>
     </FormControl>
-  )
-}
+  );
+};
 
 const QuantityPickerButton = (props: IconButtonProps) => (
-  <IconButton size="xs" fontSize="sm" variant="ghost" {...props} />
-)
+  <IconButton
+    size="xs"
+    fontSize="sm"
+    variant="ghost"
+    {...props}
+  />
+);

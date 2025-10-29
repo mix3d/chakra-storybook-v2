@@ -1,28 +1,26 @@
-import NextLink from 'next/link'
-import Image from 'next/image'
 import {
   AspectRatio,
   Box,
-  BoxProps,
+  type BoxProps,
   LinkBox,
   LinkOverlay,
-} from '@chakra-ui/react'
+} from '@chakra-ui/react';
 
 export interface ArticleCardProps {
-  root?: Omit<BoxProps, 'children'>
-  textAlign?: ArticleCardTextAlign
+  root?: Omit<BoxProps, 'children'>;
+  textAlign?: ArticleCardTextAlign;
   image?: {
-    src?: string
-    alt?: string
-    ratio?: number
-  }
-  eyebrow?: BoxProps
-  title?: BoxProps
-  description?: BoxProps
-  href?: string
+    src?: string;
+    alt?: string;
+    ratio?: number;
+  };
+  eyebrow?: BoxProps;
+  title?: BoxProps;
+  description?: BoxProps;
+  href?: string;
 }
 
-export type ArticleCardTextAlign = 'left' | 'center' | 'right'
+export type ArticleCardTextAlign = 'left' | 'center' | 'right';
 
 export const ArticleCard = ({
   textAlign = 'left',
@@ -50,10 +48,9 @@ export const ArticleCard = ({
           overflow="hidden"
           mb={3}
         >
-          <Image
+          <img
             src={image.src ?? ''}
             alt={image?.alt ?? ''}
-            fill
             style={{
               objectFit: 'cover',
             }}
@@ -75,9 +72,7 @@ export const ArticleCard = ({
           textColor={['text', null, 'text']}
           my={1}
         >
-          <NextLink href={href ?? ''} passHref>
-            <LinkOverlay>{title.children}</LinkOverlay>
-          </NextLink>
+          <LinkOverlay href={href ?? ''}>{title.children}</LinkOverlay>
         </Box>
       )}
       {description?.children && (
@@ -88,5 +83,5 @@ export const ArticleCard = ({
         />
       )}
     </LinkBox>
-  )
-}
+  );
+};

@@ -1,28 +1,26 @@
-import Image from 'next/image'
-import NextLink from 'next/link'
 import {
   AspectRatio,
   Box,
-  BoxProps,
+  type BoxProps,
   Button,
-  ButtonProps,
-} from '@chakra-ui/react'
+  type ButtonProps,
+} from '@chakra-ui/react';
 
 export interface TextCardProps {
-  root?: Omit<BoxProps, 'children'>
-  theme?: TextCardTheme
-  title?: BoxProps
-  description?: BoxProps
-  button?: ButtonProps & { href?: string }
+  root?: Omit<BoxProps, 'children'>;
+  theme?: TextCardTheme;
+  title?: BoxProps;
+  description?: BoxProps;
+  button?: ButtonProps & { href?: string };
   image?: {
-    src?: string
-    alt?: string
-  }
-  textAlign?: TextCardTextAlign
+    src?: string;
+    alt?: string;
+  };
+  textAlign?: TextCardTextAlign;
 }
 
-export type TextCardTextAlign = 'left' | 'center' | 'right'
-export type TextCardTheme = 'dark' | 'light' | 'highlight'
+export type TextCardTextAlign = 'left' | 'center' | 'right';
+export type TextCardTheme = 'dark' | 'light' | 'highlight';
 
 export const TextCard = ({
   theme = 'dark',
@@ -33,7 +31,7 @@ export const TextCard = ({
   button,
   root,
 }: TextCardProps) => {
-  const alignItems = alignItemsValue[textAlign]
+  const alignItems = alignItemsValue[textAlign];
 
   return (
     <Box
@@ -48,8 +46,11 @@ export const TextCard = ({
       {...root}
     >
       {image?.src && (
-        <Box mb={6} position="relative">
-          <Image
+        <Box
+          mb={6}
+          position="relative"
+        >
+          <img
             src={image.src}
             alt={image?.alt ?? ''}
             width={50}
@@ -66,7 +67,11 @@ export const TextCard = ({
       )}
 
       {description?.children && (
-        <Box textStyle="Desktop/Body-Default" my={2} {...description} />
+        <Box
+          textStyle="Desktop/Body-Default"
+          my={2}
+          {...description}
+        />
       )}
 
       {button?.children && !button?.href && (
@@ -81,7 +86,7 @@ export const TextCard = ({
 
       {button?.children && button?.href && (
         <Button
-          as={NextLink}
+          as="a"
           href={button.href ?? ''}
           layerStyle={theme}
           variant="ghost"
@@ -98,11 +103,11 @@ export const TextCard = ({
         />
       )}
     </Box>
-  )
-}
+  );
+};
 
 const alignItemsValue: Record<TextCardTextAlign, ButtonProps['alignItems']> = {
   center: 'center',
   left: 'flex-start',
   right: 'flex-end',
-}
+};
