@@ -3,7 +3,7 @@ import { Tooltip, Button, HStack } from '@chakra-ui/react';
 import { InfoIcon } from '@chakra-ui/icons';
 
 const meta = {
-  title: 'Chakra/Tooltip',
+  title: 'Primitives/Tooltip',
   component: Tooltip,
   parameters: {
     layout: 'centered',
