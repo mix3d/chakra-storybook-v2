@@ -69,7 +69,7 @@ export const ProductHero = ({
         direction="column"
         alignItems="flex-start"
         gap={{ base: '24px', md: '32px' }}
-        flex={{ base: '2', lg: '3 0 0' }}
+        flex={{ base: '3', lg: '3 0 0' }}
         width={{ base: '100%', lg: 'auto' }}
       >
         {/* Title */}
