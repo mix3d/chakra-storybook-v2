@@ -14,5 +14,6 @@ export * from "./section-divider";
 export * from "./section";
 export * from "./title-section";
 export * from "./product-card";
+export * from "./toast";
 // export * from './text-card'
 export * from "./cms";
