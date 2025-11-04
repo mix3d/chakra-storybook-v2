@@ -60,7 +60,7 @@ export const ProductHero = ({
       alignItems="center"
       gap={{ base: '32px', md: '64px' }}
       bg="white"
-      mw={"1200px"}
+      minW={"1200px"}
       // flexDirection={{ base: 'column', lg: 'row' }}
       {...root}
     >
