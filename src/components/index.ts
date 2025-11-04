@@ -8,6 +8,7 @@ export * from "./filter-icon";
 export * from "./gallery";
 export * from "./grid-icons";
 export * from "./image-banner";
+export * from "./message";
 export * from "./pdp-layout";
 export * from "./quantity-picker";
 export * from "./section-divider";
