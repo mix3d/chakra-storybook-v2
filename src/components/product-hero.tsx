@@ -70,6 +70,7 @@ export const ProductHero = ({
         gap={{ base: '24px', md: '32px' }}
         flex={{ base: '1', lg: '1 0 0' }}
         width={{ base: '100%', lg: 'auto' }}
+        flexGrow={2}
       >
         {/* Title */}
         <Heading
@@ -188,7 +189,7 @@ export const ProductHero = ({
           width={{ base: '100%', lg: '528px' }}
           maxWidth="700px"
           maxHeight="700px"
-          flexShrink={0}
+          flexGrow={1}
           aspectRatio="1/1"
           position="relative"
         >
