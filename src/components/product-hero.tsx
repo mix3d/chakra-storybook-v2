@@ -186,8 +186,8 @@ export const ProductHero = ({
       {image && (
         <Box
           width={{ base: '100%', lg: '528px' }}
-          maxWidth="900px"
-          maxHeight="900px"
+          maxWidth="700px"
+          maxHeight="700px"
           flexShrink={0}
           aspectRatio="1/1"
           position="relative"
