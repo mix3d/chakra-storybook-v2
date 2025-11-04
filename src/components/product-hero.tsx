@@ -68,9 +68,8 @@ export const ProductHero = ({
         direction="column"
         alignItems="flex-start"
         gap={{ base: '24px', md: '32px' }}
-        flex={{ base: '1', lg: '1 0 0' }}
+        flex={{ base: '1', lg: '3 0 0' }}
         width={{ base: '100%', lg: 'auto' }}
-        flexGrow={2}
       >
         {/* Title */}
         <Heading
@@ -189,9 +188,9 @@ export const ProductHero = ({
           width={{ base: '100%', lg: '528px' }}
           maxWidth="700px"
           maxHeight="700px"
-          flexGrow={1}
           aspectRatio="1/1"
           position="relative"
+          flex={2}
         >
           <Box
             as="img"
