@@ -83,7 +83,7 @@ export const WithCustomFeatures: Story = {
 export const WithoutSecondaryButton: Story = {
   args: {
     image: {
-      src: 'https://api.builder.io/api/v1/image/assets/TEMP/d3ad28020b6b7e7f86c320cd9f313b9a85a29c22?width=1056',
+      src: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&q=80',
       alt: 'Premium Wireless Headphones',
     },
     title: 'Premium Wireless Headphones',
