@@ -1,0 +1,1 @@
+When making components, make Storybook stories in the /stories folder as well. If there are many versions, create a showcase story with a grid of all variants. 
