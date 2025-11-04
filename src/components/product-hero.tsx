@@ -60,7 +60,7 @@ export const ProductHero = ({
       alignItems="center"
       gap={{ base: '32px', md: '64px' }}
       bg="white"
-      flexDirection={{ base: 'column', lg: 'row' }}
+      // flexDirection={{ base: 'column', lg: 'row' }}
       {...root}
     >
       {/* Left Content Section */}
