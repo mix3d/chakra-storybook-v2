@@ -89,7 +89,7 @@ export const ProductHero = ({
         width={{ base: '100%', lg: 'auto' }}
       >
         {/* Badge */}
-        {badge && (
+        {useBadge && badge && (
           <Badge
             text={badge.text}
             variant={badge.variant}
