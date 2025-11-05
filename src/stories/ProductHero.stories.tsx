@@ -29,6 +29,7 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
+    useBadge: true,
     badge: {
       text: 'Limited Edition',
       variant: 'blue',
