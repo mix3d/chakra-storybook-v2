@@ -8,6 +8,8 @@ import {
   type BoxProps,
 } from '@chakra-ui/react';
 import { ArrowForwardIcon, CheckIcon } from '@chakra-ui/icons';
+import { Badge, type BadgeProps } from './badge';
+import { Rating, type RatingProps } from './rating';
 
 export interface ProductHeroFeature {
   label: string;
@@ -16,6 +18,17 @@ export interface ProductHeroFeature {
 
 export interface ProductHeroProps {
   root?: Omit<BoxProps, 'children'>;
+  badge?: {
+    text: string;
+    variant?: BadgeProps['variant'];
+    showDot?: boolean;
+  };
+  rating?: {
+    rating: number;
+    reviewCount?: number;
+    showReviewCount?: boolean;
+    size?: RatingProps['size'];
+  };
   image?: {
     src: string;
     alt?: string;
@@ -44,6 +57,8 @@ const defaultFeatures: ProductHeroFeature[] = [
 
 export const ProductHero = ({
   root,
+  badge,
+  rating,
   image,
   title,
   description,
@@ -56,22 +71,30 @@ export const ProductHero = ({
     <Box
       display="flex"
       width="100%"
-      padding={{ base: '40px 16px', md: '80px 32px' }}
+      padding={{ base: '40px 16px', md: '80px 32px', lg: '90px 52px' }}
       alignItems="center"
-      gap={{ base: '32px', md: '64px' }}
-      bg="white"
+      gap={{ base: '32px', md: '64px', lg: '128px' }}
+      bg="#FBFCFD"
       minW={"1270px"}
-      // flexDirection={{ base: 'column', lg: 'row' }}
       {...root}
     >
       {/* Left Content Section */}
       <Flex
         direction="column"
         alignItems="flex-start"
-        gap={{ base: '24px', md: '32px' }}
-        flex={{ base: '3', lg: '3 0 0' }}
+        gap="32px"
+        flex={{ base: '3', lg: '1 0 0' }}
         width={{ base: '100%', lg: 'auto' }}
       >
+        {/* Badge */}
+        {badge && (
+          <Badge
+            text={badge.text}
+            variant={badge.variant}
+            showDot={badge.showDot}
+          />
+        )}
+
         {/* Title */}
         <Heading
           as="h1"
@@ -81,6 +104,7 @@ export const ProductHero = ({
           fontWeight="900"
           lineHeight="120%"
           letterSpacing={{ base: '-0.72px', md: '-1.2px' }}
+          alignSelf="stretch"
         >
           {title}
         </Heading>
@@ -92,12 +116,23 @@ export const ProductHero = ({
           fontSize={{ base: '16px', md: '18px', lg: '20px' }}
           fontWeight="400"
           lineHeight="150%"
+          alignSelf="stretch"
         >
           {description}
         </Text>
 
+        {/* Rating */}
+        {rating && (
+          <Rating
+            rating={rating.rating}
+            reviewCount={rating.reviewCount}
+            showReviewCount={rating.showReviewCount}
+            size={rating.size}
+          />
+        )}
+
         {/* Pricing */}
-        <Flex alignItems="flex-end" gap="13px">
+        <Flex alignItems="flex-end" gap="13px" alignSelf="stretch">
           <Text
             color="#0F172A"
             fontFamily="Raleway"
@@ -186,12 +221,13 @@ export const ProductHero = ({
       {/* Right Image Section */}
       {image && (
         <Box
-          width={{ base: '100%', lg: '528px' }}
-          maxWidth="700px"
-          maxHeight="700px"
+          width={{ base: '100%', lg: '523px' }}
+          height={{ base: 'auto', lg: '523px' }}
+          maxWidth="900px"
+          maxHeight="900px"
           aspectRatio="1/1"
           position="relative"
-          flex={2}
+          flexShrink={0}
         >
           <Box
             as="img"
