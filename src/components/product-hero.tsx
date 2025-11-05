@@ -18,6 +18,7 @@ export interface ProductHeroFeature {
 
 export interface ProductHeroProps {
   root?: Omit<BoxProps, 'children'>;
+  useBadge?: boolean;
   badge?: {
     text: string;
     variant?: BadgeProps['variant'];
@@ -57,6 +58,7 @@ const defaultFeatures: ProductHeroFeature[] = [
 
 export const ProductHero = ({
   root,
+  useBadge = false,
   badge,
   rating,
   image,
