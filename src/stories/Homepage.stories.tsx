@@ -85,7 +85,6 @@ const HomepageComponent = () => {
           { label: 'Free worldwide shipping' },
           { label: '60-day returns' },
           { label: '3-year warranty' },
-          { label: '24/7 support' },
         ]}
       />
 
