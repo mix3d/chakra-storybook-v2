@@ -77,7 +77,6 @@ export const ProductHero = ({
       alignItems="center"
       gap={{ base: '32px', md: '64px', lg: '128px' }}
       bg="#FBFCFD"
-      minW={"1270px"}
       {...root}
     >
       {/* Left Content Section */}
