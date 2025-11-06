@@ -223,13 +223,13 @@ export const ProductHero = ({
       {/* Right Image Section */}
       {image && (
         <Box
-          width={{ base: '100%', lg: '523px' }}
-          height={{ base: 'auto', lg: '523px' }}
+          width={{ base: '100%' }}
+          height={{ base: 'auto' }}
           maxWidth="900px"
           maxHeight="700px"
           aspectRatio="1/1"
           position="relative"
-          flex="2 0 0"
+          flex="3 0 0"
           minW="0"
         >
           <Box
