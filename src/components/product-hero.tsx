@@ -86,6 +86,7 @@ export const ProductHero = ({
         gap="32px"
         flex={{ base: '4', lg: '4 0 0' }}
         width={{ base: '100%' }}
+        minW="0"
       >
         {/* Badge */}
         {useBadge && badge && (
@@ -228,8 +229,8 @@ export const ProductHero = ({
           maxHeight="700px"
           aspectRatio="1/1"
           position="relative"
-          flexShrink={0}
           flex="2 0 0"
+          minW="0"
         >
           <Box
             as="img"
