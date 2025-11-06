@@ -52,7 +52,7 @@ const HomepageComponent = () => {
   ];
 
   return (
-    <Box width="100%" bg="white">
+    <Box width="100%" bg="white" minW="1200px">
       {/* Hero Section */}
       <ProductHero
         useBadge={true}
