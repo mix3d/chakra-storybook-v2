@@ -202,10 +202,6 @@ const HomepageComponent = () => {
               accordionItemProps={{
                 borderColor: '#E2E8F0',
               }}
-              accordionPanelProps={{
-                paddingX: '0',
-                paddingTop: '16px',
-              }}
             />
           </Box>
         </VStack>
