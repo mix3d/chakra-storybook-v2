@@ -114,8 +114,8 @@ const HomepageComponent = () => {
           <Flex
             width="100%"
             gap={{ base: '16px', md: '24px' }}
-            flexWrap="wrap"
             justifyContent="center"
+            alignItems="stretch"
           >
               <TextCard
                 size="large"
