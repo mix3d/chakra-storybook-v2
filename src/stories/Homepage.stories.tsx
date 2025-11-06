@@ -200,7 +200,7 @@ const HomepageComponent = () => {
       </Box>
 
       {/* Testimonials/Social Proof Section */}
-      <Box padding={{ base: '40px 16px', md: '80px 32px', lg: '90px 52px' }} bg="#F8FAFC">
+      <Box padding={{ base: '40px 16px', md: '80px 32px', lg: '90px 52px' }} bg="#f0f4f9">
         <VStack spacing={{ base: '32px', md: '64px' }} width="100%">
           <VStack spacing="12px" width="100%" textAlign="center">
             <Heading
