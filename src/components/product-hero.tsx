@@ -85,7 +85,7 @@ export const ProductHero = ({
         alignItems="flex-start"
         gap="32px"
         flex={{ base: '3', lg: '3 0 0' }}
-        width={{ base: '100%', lg: 'auto' }}
+        width={{ base: '100%' }}
       >
         {/* Badge */}
         {useBadge && badge && (
