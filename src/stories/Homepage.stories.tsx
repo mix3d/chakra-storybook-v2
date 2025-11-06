@@ -89,7 +89,7 @@ const HomepageComponent = () => {
       />
 
       {/* Features Section */}
-      <Box padding={{ base: '16px 16px', md: '32px 32px', lg: '40px 52px' }} bg="#F8FAFC">
+      <Box padding={{ base: '16px 16px', md: '32px 32px', lg: '40px 52px' }} bg="#ebedef">
         <VStack spacing={{ base: '32px', md: '64px' }} width="100%">
           <VStack spacing="12px" width="100%" textAlign="center">
             <Heading
