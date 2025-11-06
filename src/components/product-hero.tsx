@@ -229,6 +229,7 @@ export const ProductHero = ({
           aspectRatio="1/1"
           position="relative"
           flexShrink={0}
+          flex="1 0 0"
         >
           <Box
             as="img"
