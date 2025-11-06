@@ -84,7 +84,7 @@ export const ProductHero = ({
         direction="column"
         alignItems="flex-start"
         gap="32px"
-        flex={{ base: '3', lg: '3 0 0' }}
+        flex={{ base: '4', lg: '3 0 0' }}
         width={{ base: '100%' }}
       >
         {/* Badge */}
