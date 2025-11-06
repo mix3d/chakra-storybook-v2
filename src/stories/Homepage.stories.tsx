@@ -82,7 +82,7 @@ const HomepageComponent = () => {
           onClick: () => console.log('View details clicked'),
         }}
         features={[
-          { label: 'Free worldwide shipping' },
+          { label: 'Free shipping' },
           { label: '60-day returns' },
           { label: '3-year warranty' },
         ]}
