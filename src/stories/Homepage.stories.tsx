@@ -117,7 +117,6 @@ const HomepageComponent = () => {
             flexWrap="wrap"
             justifyContent="center"
           >
-            <Box flex={{ base: '1 1 100%', sm: '1 1 calc(50% - 12px)', lg: '1 1 calc(33.333% - 16px)' }} minW="0">
               <TextCard
                 size="large"
                 background="light"
@@ -130,9 +129,6 @@ const HomepageComponent = () => {
                 }}
                 root={{ borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}
               />
-            </Box>
-
-            <Box flex={{ base: '1 1 100%', sm: '1 1 calc(50% - 12px)', lg: '1 1 calc(33.333% - 16px)' }} minW="0">
               <TextCard
                 size="large"
                 background="light"
@@ -145,9 +141,6 @@ const HomepageComponent = () => {
                 }}
                 root={{ borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}
               />
-            </Box>
-
-            <Box flex={{ base: '1 1 100%', sm: '1 1 calc(50% - 12px)', lg: '1 1 calc(33.333% - 16px)' }} minW="0">
               <TextCard
                 size="large"
                 background="light"
@@ -160,7 +153,6 @@ const HomepageComponent = () => {
                 }}
                 root={{ borderRadius: '12px', boxShadow: '0 1px 3px rgba(0,0,0,0.1)' }}
               />
-            </Box>
           </Flex>
         </VStack>
       </Box>
