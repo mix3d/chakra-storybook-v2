@@ -82,6 +82,7 @@ export const TextCard = ({
     gap: iconGap,
     position: 'relative',
     backgroundColor: getBackgroundColor(),
+    height: '100%',
     ...root,
   };
 
