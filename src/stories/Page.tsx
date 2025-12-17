@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, useDisclosure } from '@chakra-ui/react';
 
 import { Header } from './Header';
-import { BasicModal } from '../components/modal';
+import { Modal } from '../components/modal';
 import './page.css';
 
 type User = {
@@ -77,7 +77,7 @@ export const Page: React.FC = () => {
           </Button>
         </div>
 
-        <BasicModal
+        <Modal
           isOpen={isOpen}
           onClose={onClose}
           title="Example Modal"
@@ -86,7 +86,7 @@ export const Page: React.FC = () => {
           onPrimaryClick={onClose}
         >
           This is a basic modal example. You can add any content here, such as forms, images, or text.
-        </BasicModal>
+        </Modal>
       </section>
     </article>
   );
