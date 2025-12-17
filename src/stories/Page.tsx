@@ -77,22 +77,16 @@ export const Page: React.FC = () => {
           </Button>
         </div>
 
-        <Modal isOpen={isOpen} onClose={onClose}>
-          <ModalOverlay />
-          <ModalContent>
-            <ModalHeader>Example Modal</ModalHeader>
-            <ModalCloseButton />
-            <ModalBody>
-              This is a basic modal example. You can add any content here, such as forms, images, or text.
-            </ModalBody>
-            <ModalFooter>
-              <Button colorScheme="blue" mr={3} onClick={onClose}>
-                Close
-              </Button>
-              <Button variant="ghost">Secondary Action</Button>
-            </ModalFooter>
-          </ModalContent>
-        </Modal>
+        <BasicModal
+          isOpen={isOpen}
+          onClose={onClose}
+          title="Example Modal"
+          primaryButtonLabel="Close"
+          secondaryButtonLabel="Secondary Action"
+          onPrimaryClick={onClose}
+        >
+          This is a basic modal example. You can add any content here, such as forms, images, or text.
+        </BasicModal>
       </section>
     </article>
   );
