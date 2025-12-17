@@ -1,4 +1,15 @@
 import React from 'react';
+import {
+  Button,
+  Modal,
+  ModalOverlay,
+  ModalContent,
+  ModalHeader,
+  ModalFooter,
+  ModalBody,
+  ModalCloseButton,
+  useDisclosure,
+} from '@chakra-ui/react';
 
 import { Header } from './Header';
 import './page.css';
@@ -9,6 +20,7 @@ type User = {
 
 export const Page: React.FC = () => {
   const [user, setUser] = React.useState<User>();
+  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
     <article>
@@ -67,6 +79,29 @@ export const Page: React.FC = () => {
           </svg>
           Viewports addon in the toolbar
         </div>
+
+        <div style={{ marginTop: '2rem' }}>
+          <Button onClick={onOpen} colorScheme="blue">
+            Open Modal
+          </Button>
+        </div>
+
+        <Modal isOpen={isOpen} onClose={onClose}>
+          <ModalOverlay />
+          <ModalContent>
+            <ModalHeader>Example Modal</ModalHeader>
+            <ModalCloseButton />
+            <ModalBody>
+              This is a basic modal example. You can add any content here, such as forms, images, or text.
+            </ModalBody>
+            <ModalFooter>
+              <Button colorScheme="blue" mr={3} onClick={onClose}>
+                Close
+              </Button>
+              <Button variant="ghost">Secondary Action</Button>
+            </ModalFooter>
+          </ModalContent>
+        </Modal>
       </section>
     </article>
   );
