@@ -1,5 +1,5 @@
 import {
-  Modal,
+  Modal as ChakraModal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -8,11 +8,11 @@ import {
   ModalCloseButton,
   Button,
   Flex,
-  type ModalProps,
+  type ModalProps as ChakraModalProps,
 } from '@chakra-ui/react';
 import type { ReactNode } from 'react';
 
-export interface BasicModalProps {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
@@ -21,11 +21,11 @@ export interface BasicModalProps {
   secondaryButtonLabel?: string;
   onPrimaryClick?: () => void;
   onSecondaryClick?: () => void;
-  size?: ModalProps['size'];
+  size?: ChakraModalProps['size'];
   showFooter?: boolean;
 }
 
-export const BasicModal = ({
+export const Modal = ({
   isOpen,
   onClose,
   title,
@@ -36,41 +36,43 @@ export const BasicModal = ({
   onSecondaryClick,
   size = 'md',
   showFooter = true,
-}: BasicModalProps) => {
+}: ModalProps) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size={size} isCentered>
+    <ChakraModal isOpen={isOpen} onClose={onClose} size={size} isCentered>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader
           fontFamily="Raleway"
-          fontSize="16px"
+          fontSize="20px"
           fontWeight={800}
-          lineHeight="120%"
+          lineHeight="130%"
           textAlign="center"
           color="shading.900"
-          padding="8px 12px"
+          padding="20px 24px"
           borderBottom="1px solid"
           borderColor="shading.200"
         >
           {title}
         </ModalHeader>
         <ModalCloseButton
-          top="8px"
-          right="12px"
-          fontSize="24px"
+          top="16px"
+          right="16px"
+          fontSize="20px"
         />
         <ModalBody
-          padding="16px"
+          padding="24px"
           maxHeight="60vh"
           overflowY="auto"
           fontFamily="DM Sans"
+          fontSize="16px"
+          lineHeight="1.6"
         >
           {children}
         </ModalBody>
         {showFooter && (
           <ModalFooter
-            padding="16px 24px"
-            gap="8px"
+            padding="20px 24px"
+            gap="12px"
             boxShadow="0 -2px 4px 0 rgba(0, 0, 0, 0.10)"
             borderTop="1px solid"
             borderColor="shading.200"
@@ -78,7 +80,7 @@ export const BasicModal = ({
             <Flex
               width="100%"
               justify="flex-end"
-              gap="8px"
+              gap="12px"
               direction={{ base: 'column', sm: 'row' }}
             >
               {secondaryButtonLabel && (
@@ -91,6 +93,7 @@ export const BasicModal = ({
                   fontSize="16px"
                   borderColor="primary.500"
                   color="primary.500"
+                  px={6}
                   _hover={{
                     bg: 'primary.50',
                   }}
@@ -105,9 +108,10 @@ export const BasicModal = ({
                   onClick={onPrimaryClick || onClose}
                   fontFamily="Raleway"
                   fontWeight={800}
-                  fontSize="18px"
+                  fontSize="16px"
                   bg="primary.500"
                   color="white"
+                  px={6}
                   _hover={{
                     bg: 'primary.600',
                   }}
@@ -119,6 +123,6 @@ export const BasicModal = ({
           </ModalFooter>
         )}
       </ModalContent>
-    </Modal>
+    </ChakraModal>
   );
 };

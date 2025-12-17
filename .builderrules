@@ -1,1 +1,3 @@
 When making components, make Storybook stories in the /stories folder as well. If there are many versions, create a showcase story with a grid of all variants. 
+
+When making Modal stories, make sure the modal does not auto-open when previewing the Story
