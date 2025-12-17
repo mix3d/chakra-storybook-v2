@@ -1,5 +1,5 @@
 import {
-  Modal,
+  Modal as ChakraModal,
   ModalOverlay,
   ModalContent,
   ModalHeader,
@@ -8,11 +8,11 @@ import {
   ModalCloseButton,
   Button,
   Flex,
-  type ModalProps,
+  type ModalProps as ChakraModalProps,
 } from '@chakra-ui/react';
 import type { ReactNode } from 'react';
 
-export interface BasicModalProps {
+export interface ModalProps {
   isOpen: boolean;
   onClose: () => void;
   title?: string;
@@ -21,11 +21,11 @@ export interface BasicModalProps {
   secondaryButtonLabel?: string;
   onPrimaryClick?: () => void;
   onSecondaryClick?: () => void;
-  size?: ModalProps['size'];
+  size?: ChakraModalProps['size'];
   showFooter?: boolean;
 }
 
-export const BasicModal = ({
+export const Modal = ({
   isOpen,
   onClose,
   title,
@@ -36,9 +36,9 @@ export const BasicModal = ({
   onSecondaryClick,
   size = 'md',
   showFooter = true,
-}: BasicModalProps) => {
+}: ModalProps) => {
   return (
-    <Modal isOpen={isOpen} onClose={onClose} size={size} isCentered>
+    <ChakraModal isOpen={isOpen} onClose={onClose} size={size} isCentered>
       <ModalOverlay />
       <ModalContent>
         <ModalHeader
@@ -119,6 +119,6 @@ export const BasicModal = ({
           </ModalFooter>
         )}
       </ModalContent>
-    </Modal>
+    </ChakraModal>
   );
 };
